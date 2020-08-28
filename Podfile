@@ -9,10 +9,13 @@ target 'CleanArchitecture' do
   pod 'RxSwift'
   pod 'SnapKit'
   pod 'Alamofire'
+  pod 'ObjectMapper'
   pod 'Disk'
   pod 'AlamofireNetworkActivityLogger', '~> 2.3'
   pod 'Kingfisher', '~> 4.0'
   pod 'Toast-Swift'
+  pod 'Swinject'
+  pod 'SwinjectAutoregistration'
 
   # Pods for CleanArchitecture
 
