@@ -11,11 +11,6 @@ import Alamofire
 import AlamofireObjectMapper
 import ObjectMapper
 
-struct ErrorType {
-    var error: String?
-    var message: String?
-}
-
 protocol LoadingRepresentable {
     var isLoading: Bool { get }
 }
@@ -23,7 +18,7 @@ protocol LoadingRepresentable {
 enum Resource<T>: LoadingRepresentable {
     case Loading
     case Success(T)
-    case Failure(ErrorType?)
+    case Failure(String)
 
     var isLoading: Bool {
         if case .Loading = self {
@@ -66,7 +61,7 @@ final class DefaultNetwork: Network {
             observer.onNext(Resource.Loading)
             Alamofire.request("\(path)", method: method, parameters: parameters).responseObject { (response: DataResponse<T>) in
                 guard response.result.isSuccess, let json = response.value else {
-                    observer.onNext(Resource.Failure(response.value as? ErrorType))
+                    observer.onNext(Resource.Failure(response.result.error?.localizedDescription ?? "오류가 발생했습니다."))
                     observer.onCompleted()
                     return
                 }

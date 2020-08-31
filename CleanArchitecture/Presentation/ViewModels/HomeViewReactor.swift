@@ -91,7 +91,7 @@ final class HomeViewReactor: Reactor, LoadingIndicatable {
                     case let .Success(data):
                         return .just(.setMusic(data))
                     case let .Failure(error):
-                        self.error.onNext(error?.message ?? "오류가 발생했습니다.")
+                        self.error.onNext(error)
                         return .empty()
                     default:
                         return .empty()
