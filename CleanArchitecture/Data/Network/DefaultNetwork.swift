@@ -8,6 +8,7 @@
 
 import RxSwift
 import Alamofire
+import AlamofireObjectMapper
 import ObjectMapper
 
 struct ErrorType {
@@ -63,8 +64,8 @@ final class DefaultNetwork: Network {
     private func request<T: Mappable>(_ path: String, method: HTTPMethod, parameters: Parameters?, responseType: T.Type) -> Observable<Resource<T>> {
         return Observable.create { observer in
             observer.onNext(Resource.Loading)
-            Alamofire.request("\(path)", method: method, parameters: parameters).responseJSON { response in
-                guard response.isSuccessResponse(), let json = response.value as? T else {
+            Alamofire.request("\(path)", method: method, parameters: parameters).responseObject { (response: DataResponse<T>) in
+                guard response.result.isSuccess, let json = response.value else {
                     observer.onNext(Resource.Failure(response.value as? ErrorType))
                     observer.onCompleted()
                     return
@@ -72,7 +73,7 @@ final class DefaultNetwork: Network {
                 observer.onNext(Resource.Success(json))
                 observer.onCompleted()
                 return
-                }
+            }
             return Disposables.create()
         }
         .observeOn(MainScheduler.asyncInstance)
@@ -84,14 +85,5 @@ final class DefaultNetwork: Network {
     
     func post<T: Mappable>(_ path: String, parameters: [String: Any]?, responseType: T.Type) -> Observable<Resource<T>> {
         return request(path, method: .post, parameters: parameters, responseType: T.self)
-    }
-}
-
-extension DataResponse {
-    func isSuccessResponse() -> Bool {
-        guard let response = self.response else {
-            return false
-        }
-        return response.statusCode >= 200 && response.statusCode < 300
     }
 }

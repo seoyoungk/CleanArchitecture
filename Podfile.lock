@@ -2,6 +2,10 @@ PODS:
   - Alamofire (4.9.1)
   - AlamofireNetworkActivityLogger (2.4.0):
     - Alamofire (~> 4.8)
+  - AlamofireObjectMapper (5.2.1):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
+  - Differentiator (4.0.1)
   - Disk (0.6.4)
   - Kingfisher (4.10.1)
   - ObjectMapper (3.5.2)
@@ -10,6 +14,10 @@ PODS:
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
@@ -22,11 +30,12 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireNetworkActivityLogger (~> 2.3)
+  - AlamofireObjectMapper
   - Disk
   - Kingfisher (~> 4.0)
-  - ObjectMapper
   - ReactorKit
   - RxCocoa
+  - RxDataSources
   - RxSwift
   - SnapKit
   - Swinject
@@ -37,11 +46,14 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireNetworkActivityLogger
+    - AlamofireObjectMapper
+    - Differentiator
     - Disk
     - Kingfisher
     - ObjectMapper
     - ReactorKit
     - RxCocoa
+    - RxDataSources
     - RxRelay
     - RxSwift
     - SnapKit
@@ -52,11 +64,14 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireNetworkActivityLogger: 6d3398c692d2c5d83b0c58793537860aca1e383d
+  AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   Disk: dcee5c2e98fb72f9a924cde8da8435b08244a80e
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   ObjectMapper: b53ae947d370bf89423e86be7d4e2d2b2a8d3f40
   ReactorKit: a63c5e11e0fd32d59d672e54178b0ed2876b764b
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
@@ -64,6 +79,6 @@ SPEC CHECKSUMS:
   SwinjectAutoregistration: 330f5012642a8b5c89a8a4adb0c5e52df07382c0
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 4b4d63b36492288724ef3044b160464b082a2835
+PODFILE CHECKSUM: c742201ac6f590f157c485cddd4b95ba72fb9978
 
 COCOAPODS: 1.9.1

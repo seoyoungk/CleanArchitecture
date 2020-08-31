@@ -21,7 +21,7 @@ final class DefaultWebAPI: WebAPI {
     }
 
     func searchMusic(music: String) -> Observable<Resource<MusicResponse>> {
-        let params: [String: Any] = ["term": music]
+        let params: [String: Any] = ["term": music, "sort": "popular"].toParams()
         return network.get("https://itunes.apple.com/search", parameters: params, responseType: MusicResponse.self)
     }
 }

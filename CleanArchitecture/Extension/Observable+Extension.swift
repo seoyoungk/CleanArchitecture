@@ -1,5 +1,5 @@
 //
-//  observable+Extension.swift
+//  Observable+Extension.swift
 //  CleanArchitecture
 //
 //  Created by Seoyoung on 2020/08/28.
