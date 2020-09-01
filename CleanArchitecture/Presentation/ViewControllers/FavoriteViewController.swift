@@ -33,7 +33,7 @@ extension FavoriteViewController: StoryboardView {
 
         reactor.state.map { $0.musics }
             .bind(to: collectionView.rx.items(cellIdentifier: "FavoriteCell", cellType: FavoriteCell.self)) { (_, item, cell) in
-                cell.setMusicInfo(item)
+                cell.reactor = MusicCellReactor(music: item)
         }.disposed(by: disposeBag)
 
         collectionView.rx.modelSelected(Music.self)

@@ -8,23 +8,41 @@
 
 import UIKit
 import Kingfisher
+import RxSwift
+import ReactorKit
 
-class MusicCell: UITableViewCell {
+class MusicCell: UITableViewCell, StoryboardView {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelArtist: UILabel!
     @IBOutlet weak var labelCollectionName: UILabel!
 
+    var disposeBag: DisposeBag = DisposeBag()
+    typealias Reactor = MusicCellReactor
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    func setMusicInfo(_ music: Music) {
-        if let url = music.artworkUrl100, let imgUrl = URL(string: url) {
-            imgView.kf.setImage(with: imgUrl)
-        }
-        labelTitle.text = music.trackName
-        labelArtist.text = music.artistName
-        labelCollectionName.text = music.collectionName
+    func bind(reactor: Reactor) {
+
+        reactor.state.map { $0.music.artworkUrl100 }
+            .subscribe(onNext: { [weak self] artworkUrl in
+                if let url = artworkUrl, let imgUrl = URL(string: url) {
+                    self?.imgView?.kf.setImage(with: imgUrl)
+                }
+            }).disposed(by: disposeBag)
+
+        reactor.state.map { $0.music.trackName }
+            .bind(to: labelTitle.rx.text)
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.music.artistName }
+            .bind(to: labelArtist.rx.text)
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.music.collectionName }
+            .bind(to: labelCollectionName.rx.text)
+            .disposed(by: disposeBag)
     }
 }

@@ -15,14 +15,12 @@ final class MusicContainer {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 
         // Services
-        container.register(Network.self) { _ in DefaultNetwork() }
-        container.register(WebAPI.self) { r in DefaultWebAPI(network: r.resolve(Network.self)!) }
-        container.register(CacheRepository.self) { r in DefaultCacheRepository() }
+        container.autoregister(Network.self, initializer: DefaultNetwork.init)
+        container.autoregister(WebAPI.self, initializer: DefaultWebAPI.init)
+        container.autoregister(CacheRepository.self, initializer: DefaultCacheRepository.init)
 
         // UseCases
-        container.register(MusicUseCase.self) { r in
-            return DefaultMusicUseCase(api: r.resolve(WebAPI.self)!, cacheRepository: r.resolve(CacheRepository.self)!)
-        }
+        container.autoregister(MusicUseCase.self, initializer: DefaultMusicUseCase.init)
 
         // Views
         container.register(HomeViewController.self) { r in

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D208C6A24FF370C005A574B /* MusicCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D208C6924FF370C005A574B /* MusicCellReactor.swift */; };
 		1D87132C24F783B0006B4139 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D87132B24F783B0006B4139 /* UIColor+Extension.swift */; };
 		1D87132E24F78CD3006B4139 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D87132D24F78CD3006B4139 /* HomeViewController.swift */; };
 		1D87133024F78CF6006B4139 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D87132F24F78CF6006B4139 /* FavoriteViewController.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D208C6924FF370C005A574B /* MusicCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCellReactor.swift; sourceTree = "<group>"; };
 		1D87132B24F783B0006B4139 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		1D87132D24F78CD3006B4139 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1D87132F24F78CF6006B4139 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				1D87133824F79979006B4139 /* HomeViewReactor.swift */,
 				1DE9BAD324FC9A6E009832EF /* FavoriteViewReactor.swift */,
 				1DE9BAD724FCA1AE009832EF /* MusicDetailViewReactor.swift */,
+				1D208C6924FF370C005A574B /* MusicCellReactor.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				1DB223C024F104CE009D4C33 /* DefaultNetwork.swift in Sources */,
 				1DB2238024EF9FE3009D4C33 /* AppDelegate.swift in Sources */,
 				1DE9BADB24FCC2BC009832EF /* CacheRepository.swift in Sources */,
+				1D208C6A24FF370C005A574B /* MusicCellReactor.swift in Sources */,
 				1DB2238224EF9FE3009D4C33 /* SceneDelegate.swift in Sources */,
 				1D87133724F797F8006B4139 /* Container.swift in Sources */,
 				1DB223C224F4E10B009D4C33 /* MusicUseCase.swift in Sources */,
@@ -752,6 +756,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T49KR6B34C;
 				INFOPLIST_FILE = CleanArchitecture/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -770,6 +775,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T49KR6B34C;
 				INFOPLIST_FILE = CleanArchitecture/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

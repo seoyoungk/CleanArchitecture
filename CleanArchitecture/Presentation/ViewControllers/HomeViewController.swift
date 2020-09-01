@@ -21,11 +21,11 @@ class HomeViewController: BaseViewController, UIScrollViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        reactor?.action.onNext(.setEmptyInput)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reactor?.action.onNext(.setEmptyInput)
     }
 }
 
@@ -56,18 +56,21 @@ extension HomeViewController: StoryboardView {
 
         let musicInfoDataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, MusicInfo>>(configureCell: { _, tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withIdentifier: "MusicCell", for: indexPath) as! MusicCell
-            switch item {
-            case let .RecentSearchHistory(history):
-                cell.setMusicInfo(history)
-            case let .Song(song):
-                cell.setMusicInfo(song)
-            case let .Album(album):
-                cell.setMusicInfo(album)
-            case let .MusicVideo(mv):
-                cell.setMusicInfo(mv)
-            case let .ETC(etc):
-                cell.setMusicInfo(etc)
+            var music: Music {
+                switch item {
+                case let .RecentSearchHistory(history):
+                    return history
+                case let .Song(song):
+                    return song
+                case let .Album(album):
+                    return album
+                case let .MusicVideo(mv):
+                    return mv
+                case let .ETC(etc):
+                    return etc
+                }
             }
+            cell.reactor = MusicCellReactor(music: music)
             return cell
         }, titleForHeaderInSection: { dataSource, index in
             return dataSource.sectionModels[index].model
