@@ -24,11 +24,13 @@ Dependency Injection using Swinject
 
 ```Swift
 ...
-container.register(Network.self) { _ in DefaultNetwork() }
+// Services
+container.autoregister(Network.self, initializer: DefaultNetwork.init)
+container.autoregister(WebAPI.self, initializer: DefaultWebAPI.init)
+container.autoregister(CacheRepository.self, initializer: DefaultCacheRepository.init)
 
-container.register(MusicUseCase.self) { r in
-    return DefaultMusicUseCase(api: r.resolve(WebAPI.self)!, cacheRepository: r.resolve(CacheRepository.self)!)
-}
+// UseCases
+container.autoregister(MusicUseCase.self, initializer: DefaultMusicUseCase.init)
 ...
 ```
 
